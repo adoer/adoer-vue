@@ -1,20 +1,25 @@
 <template>
 <div class="content">
-<h1>{{ msg }}</h1>
+    <ani></ani>
 </div>
 </template>
-
 <script>
+import ani from './animate'
 export default {
-    name: 'content',
-    data: function () {
-        return {
-            msg: 'content'
-        }
+  name: 'content',
+  components: {
+    ani
+  },
+  data: function () {
+    return {
+      msg: 'content1'
     }
+  }
 }
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
+.content {
+  height: 100%;
+}
 </style>

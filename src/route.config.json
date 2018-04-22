@@ -1,0 +1,19 @@
+[
+    {
+        "name": "简介",
+        "path": "introduction"
+    },
+    {
+        "name": "组件",
+        "children": [
+            {
+                "name": "组件1",
+                "path": "component1"
+            },
+            {
+                "name": "组件1",
+                "path": "component2"
+            }
+        ]
+    }
+]
