@@ -15,10 +15,14 @@
 </template>
 
 <script>
-let apple = require("../assets/images/apple.svg");
-let orange = require("../assets/images/orange.svg");
-let pineapple = require("../assets/images/pineapple.svg");
-let watermelon = require("../assets/images/watermelon.svg");
+let apple = "../static/images/apple.svg";
+let orange = "../static/images/orange.svg";
+let pineapple = "../static/images/pineapple.svg";
+let watermelon = "../static/images/watermelon.svg";
+let apple_frame = "../static/images/apple_frame.svg";
+let orange_frame = "../static/images/orange_frame.svg";
+let pineapple_frame = "../static/images/pineapple_frame.svg";
+let watermelon_frame = "../static/images/watermelon_frame.svg";
 export default {
   name: 'content',
   data: function () {
@@ -32,22 +36,22 @@ export default {
       ],
       data: [
         {
-          icon: apple,
+          icon: apple_frame,
           max: 1375,
           val: 0
         },
         {
-          icon: orange,
+          icon: orange_frame,
           max: 2580,
           val: 0
         },
         {
-          icon: pineapple,
+          icon: pineapple_frame,
           max: 136,
           val: 0
         },
         {
-          icon: watermelon,
+          icon: watermelon_frame,
           max: 235,
           val: 0
         }
@@ -95,60 +99,48 @@ export default {
       background-size: 50px 50px;
       line-height: 100px;
       font-size: 30px;
-      padding-left: 50px;
+      padding-left: 55px;
+      width: 25%;
       text-align: left;
     }
   }
   .icon-down {
-    height: 50px;
-    width: 50px;
+    height: 42px;
+    width: 42px;
     border: 1px solid #ccc;
     margin-left: -25px;
     top: -166px;
     left: 50%;
     position: absolute;
     .item {
-      height: 50px;
-      width: 50px;
+      height: 42px;
+      width: 42px;
       position: absolute;
       top: 0;
       background-repeat: no-repeat;
       background-position: 0 50%;
-      opacity: 0.5;
-      background-size: 50px 50px;
+      opacity: 0;
+      background-size: 42px 42px;
     }
     $data: (
-       (x:-270px, y:180px, delay:random() * 1#{s}),
-       (x:-100px, y:180px, delay:random() * 1#{s}),
-       (x:100px, y:180px, delay:random() * 1#{s}),
-       (x:270px, y:180px, delay:random() * 1#{s})
+       (x:-272px, y:194px, delay:0#{s}),
+       (x:-100px, y:180px, delay:0.2#{s}),
+       (x:100px, y:180px, delay:0.5#{s}),
+       (x:270px, y:180px, delay:0.8#{s})
     );
     @for $i from 1 through length($data) {
       $item: nth($data, $i);
       .itemWrap#{$i} {
-        animation: vertical-animation#{$i} 2s cubic-bezier(
-            0.01,
-            0.73,
-            0.8,
-            0.38
-          ) map-get($item, delay) infinite;
-        -webkit-animation: vertical-animation#{$i} 2s cubic-bezier(
-            0.01,
-            0.73,
-            0.8,
-            0.38
-          ) map-get($item, delay) infinite;
-        -moz-animation: vertical-animation#{$i} 2s cubic-bezier(
-            0.01,
-            0.73,
-            0.8,
-            0.38
-          ) map-get($item, delay) infinite;
+        animation: vertical-animation#{$i} 1s linear map-get($item, delay);
+        -webkit-animation: vertical-animation#{$i} 1s linear map-get($item, delay);
+        -moz-animation: vertical-animation#{$i} 1s linear map-get($item, delay);
+        animation-fill-mode: forwards;
       }
       .itemWrap#{$i} .item {
-        animation: hor-animation#{$i} 2s linear map-get($item, delay) infinite;
-        -webkit-animation: hor-animation#{$i} 2s linear map-get($item, delay) infinite;
-        -moz-animation: hor-animation#{$i} 2s linear map-get($item, delay) infinite;
+        animation: hor-animation#{$i} 1s linear map-get($item, delay);
+        -webkit-animation: hor-animation#{$i} 1s linear map-get($item, delay);
+        -moz-animation: hor-animation#{$i} 1s linear map-get($item, delay);
+        animation-fill-mode: forwards;
       }
       @-webkit-keyframes hor-animation#{$i} {
         0% {
@@ -157,7 +149,7 @@ export default {
         }
         100% {
           transform: translateX(map-get($item, x));
-          opacity: 0.5;
+          opacity: 1;
         }
       }
       @-webkit-keyframes vertical-animation#{$i} {
@@ -166,7 +158,7 @@ export default {
         }
         100% {
           transform: translateY(map-get($item, y));
-          opacity: 0.5;
+          opacity: 1;
         }
       }
     }
